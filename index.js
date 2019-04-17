@@ -22,7 +22,7 @@ app.post('/getmeasure-state', (req, res) => {
   res.send({
     replies: [{
       type: 'text',
-      content: req.body.conversation.memory.ent_state_value.raw ,
+      content: req.body.nlp.entities,
     }], 
     conversation: {
       memory: { key: 'value' }
