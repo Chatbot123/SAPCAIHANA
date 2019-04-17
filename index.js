@@ -17,12 +17,34 @@ app.post('/getmeasure-state', (req, res) => {
   var v_ent_state_value = req.body.nlp.entities.ent_state_value[0].raw;
   var v_ent_state = req.body.nlp.entities.ent_state[0].raw;
   
-var content_text = v_ent_measure + " " + v_ent_state_value + " " + v_ent_state;
+  var xsjs_url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/Efashion_azure.xsjs?";
+  
+   if(ent_state)
+   {
+        ent_state=ent_state.split(" ").join("");
+        xsjs_url = xsjs_url + '&ENT_STATE=' + ent_state;
+   }
+  if(ent_measure)
+  {
+      ent_measure=ent_measure.split(" ").join("");
+      xsjs_url = xsjs_url  + '&ENT_MEASURE=' + ent_measure;
+  }
+   if(ent_state_value)
+  {
+      ent_state_value=ent_state_value.split(" ").join("");
+      xsjs_url= xsjs_url + '&STATE=' + ent_state_value;
+  }
+  
+  //call xsjs function
+  //getXSJSresult(xsjs_url,res);
+ 
+  
+//var content_text = v_ent_measure + " " + v_ent_state_value + " " + v_ent_state;
 //`${content_text}`
   res.send({
     replies: [{
       type: 'text',
-      content: content_text,
+      content: xsjs_url,
     }], 
     conversation: {
       memory: { key: 'value' }
