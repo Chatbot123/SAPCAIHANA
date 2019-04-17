@@ -13,7 +13,7 @@ app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
 app.post('/getmeasure-state', (req, res) => {
   console.log(req.body)
   
-   //var v_ent_measure = req.body.entities.ent_measure[0].raw;
+   var v_ent_measure = req.body.entities.ent_measure[0].raw;
  // var v_ent_state_value = req.body.entities.ent_state_value[0].raw;
   //var v_ent_state = req.body.entities.ent_state[0].raw;
   
@@ -22,7 +22,7 @@ app.post('/getmeasure-state', (req, res) => {
   res.send({
     replies: [{
       type: 'text',
-      content: req.body,
+      content: v_ent_measure,
     }], 
     conversation: {
       memory: { key: 'value' }
