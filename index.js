@@ -17,12 +17,12 @@ app.post('/getmeasure-state', (req, res) => {
   var v_ent_state_value = req.body.entities.ent_state_value[0].raw;
   var v_ent_state = req.body.entities.ent_state[0].raw;
   
-var content_text = v_ent_measure ;//+ " " + ent_state_value + " " + ent_state;
+//var content_text = v_ent_measure ;//+ " " + ent_state_value + " " + ent_state;
 //`${content_text}`
   res.send({
     replies: [{
       type: 'text',
-      content: content_text,
+      content: v_ent_measure
     }], 
     conversation: {
       memory: { key: 'value' }
