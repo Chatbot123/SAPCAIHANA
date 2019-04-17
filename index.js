@@ -22,7 +22,7 @@ app.post('/getmeasure-state', (req, res) => {
   res.send({
     replies: [{
       type: 'text',
-      content: `${content_text}` ,
+      content: content_text ,
     }], 
     conversation: {
       memory: { key: 'value' }
