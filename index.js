@@ -128,7 +128,7 @@ var request = require('request-promise-native'),
                  res.send({
                        replies: [{
                                     type: 'text',
-                                    content: result,
+                                    content: body,
                                 }], 
                       conversation: {
                                       memory: { key: 'value' }
