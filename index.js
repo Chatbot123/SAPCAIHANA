@@ -13,9 +13,9 @@ app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
 app.post('/getmeasure-state', (req, res) => {
   console.log(req.body)
   
-  var v_ent_measure = req.body.nlp.entities.ent_measure[0].raw;
-  var v_ent_state_value = req.body.nlp.entities.ent_state_value[0].raw;
-  var v_ent_state = req.body.nlp.entities.ent_state[0].raw;
+  var ent_measure = req.body.nlp.entities.ent_measure[0].raw;
+  var ent_state_value = req.body.nlp.entities.ent_state_value[0].raw;
+  var ent_state = req.body.nlp.entities.ent_state[0].raw;
   
   var xsjs_url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/Efashion_azure.xsjs?";
   
