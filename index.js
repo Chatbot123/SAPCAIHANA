@@ -18,11 +18,11 @@ app.post('/getmeasure-state', (req, res) => {
   const ent_state = req.body.conversation.memory.ent_state.raw;
   
   var content_text = ent_measure; //+ " " + ent_state_value + " " + ent_state;
-
+//`${content_text}`
   res.send({
     replies: [{
       type: 'text',
-      content: `${content_text}` ,
+      content: req.body ,
     }], 
     conversation: {
       memory: { key: 'value' }
