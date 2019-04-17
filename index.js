@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const request = require('request-promise-native')
 
 const app = express() 
 
@@ -131,7 +132,7 @@ function getXSJSresult(xsjs_url,res) {
                           }
                     })
      }
-  });//request close
+  })//request close
 };
 //----------------------------------
   
