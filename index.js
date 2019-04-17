@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const request = require('request-promise-native')
+//const request = require('request-promise-native')
 
 const app = express() 
 
@@ -36,104 +36,107 @@ app.post('/getmeasure-state', (req, res) => {
       xsjs_url= xsjs_url + '&STATE=' + ent_state_value;
   }
   
-  //call xsjs function
-  getXSJSresult(xsjs_url,res);
-  
- })
- //---------------------------------------------
-  //xsjs call
-function getXSJSresult(xsjs_url,res) {
-  var request = require('request-promise-native'),
+var request = require('request-promise-native'),
         username = "SANYAM_K",
         password = "Welcome@234",
         auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
 
-    request(
-    {
-        url : xsjs_url,
-        headers : {
-            "Authorization" : auth
-        }
-    }, 
+    request({
+                url : xsjs_url,
+                headers : {
+                    "Authorization" : auth
+                }
+            }, 
  
-    function(error, res, body) {
-        console.log('error:', error); // Print the error if one occurred
-        console.log('body:', body);
-         var result = JSON.parse(body);
-        var count = Object.keys(result.results).length;
-        console.log(count);
-        var distext = '';
-               
-        for(var i = 0; i<count; i++)
-        {
-            
-             if(result.results[i].AMOUNT_SOLD)
-            {
-                var sale_amount = result.results[i].AMOUNT_SOLD;
-                distext = 'Sales worth of $' + sale_amount;
-            }
-             if(result.results[i].MARGIN)
-            {
-                var profit_amount = result.results[i].MARGIN;
-                distext = 'Profit worth of $' + profit_amount;
-            }
-            
-              if(result.results[i].QUANTITY_SOLD)
-            {
-                var qty_sold = result.results[i].QUANTITY_SOLD;
-                distext = qty_sold+' Products sold ';
-            }
-            if(result.results[i].STATE)
-            {
-                var v_state = result.results[i].STATE;
-                distext = distext + ' in state ' + v_state;
-            }
-            if(result.results[i].CITY)
-            {
-                var v_city = result.results[i].CITY;
-                distext = distext + ' in city ' + v_city;
-            }
-            if(result.results[i].SHOP_NAME)
-            {
-                var v_shop = result.results[i].SHOP_NAME;
-                distext = distext + ' for shop ' + v_shop;
-            }
-             if(result.results[i].FAMILY_NAME)
-            {
-                var v_family = result.results[i].FAMILY_NAME;
-                distext = distext + ' for product family ' + v_family;
-            } 
-            
-              if(result.results[i].YR)
-            {
-                var v_yr = result.results[i].YR;
-                distext = distext + ' for year ' + v_yr;
-            } 
-            
-              if(result.results[i].QTR)
-            {
-                var v_qtr = result.results[i].QTR;
-                distext = distext + ' for qtr ' + v_qtr;
-            } 
-            
-                if(result.results[i].MTH)
-            {
-                var v_mth = result.results[i].MTH;
-                distext = distext + ' for month ' + v_mth;
-            } 
-            
-            res.send({
-             replies: [{
-                          type: 'text',
-                          content: distext,
-                      }], 
-            conversation: {
-                            memory: { key: 'value' }
-                          }
-                    })
-     }
-  })//request close
-};
+            function(error, res, body) {
+                  console.log('error:', error); // Print the error if one occurred
+                  console.log('body:', body);
+                   var result = JSON.parse(body);
+                 /* var count = Object.keys(result.results).length;
+                  console.log(count);
+                  var distext = '';
+
+                  for(var i = 0; i<count; i++)
+                  {
+
+                       if(result.results[i].AMOUNT_SOLD)
+                      {
+                          var sale_amount = result.results[i].AMOUNT_SOLD;
+                          distext = 'Sales worth of $' + sale_amount;
+                      }
+                       if(result.results[i].MARGIN)
+                      {
+                          var profit_amount = result.results[i].MARGIN;
+                          distext = 'Profit worth of $' + profit_amount;
+                      }
+
+                        if(result.results[i].QUANTITY_SOLD)
+                      {
+                          var qty_sold = result.results[i].QUANTITY_SOLD;
+                          distext = qty_sold+' Products sold ';
+                      }
+                      if(result.results[i].STATE)
+                      {
+                          var v_state = result.results[i].STATE;
+                          distext = distext + ' in state ' + v_state;
+                      }
+                      if(result.results[i].CITY)
+                      {
+                          var v_city = result.results[i].CITY;
+                          distext = distext + ' in city ' + v_city;
+                      }
+                      if(result.results[i].SHOP_NAME)
+                      {
+                          var v_shop = result.results[i].SHOP_NAME;
+                          distext = distext + ' for shop ' + v_shop;
+                      }
+                       if(result.results[i].FAMILY_NAME)
+                      {
+                          var v_family = result.results[i].FAMILY_NAME;
+                          distext = distext + ' for product family ' + v_family;
+                      } 
+
+                        if(result.results[i].YR)
+                      {
+                          var v_yr = result.results[i].YR;
+                          distext = distext + ' for year ' + v_yr;
+                      } 
+
+                        if(result.results[i].QTR)
+                      {
+                          var v_qtr = result.results[i].QTR;
+                          distext = distext + ' for qtr ' + v_qtr;
+                      } 
+
+                          if(result.results[i].MTH)
+                      {
+                          var v_mth = result.results[i].MTH;
+                          distext = distext + ' for month ' + v_mth;
+                      } 
+
+                      res.send({
+                       replies: [{
+                                    type: 'text',
+                                    content: distext,
+                                }], 
+                      conversation: {
+                                      memory: { key: 'value' }
+                                    }
+                              })
+               }*/
+      
+                 res.send({
+                       replies: [{
+                                    type: 'text',
+                                    content: result,
+                                }], 
+                      conversation: {
+                                      memory: { key: 'value' }
+                                    }
+                              })
+            })//request close
+
+})
 //----------------------------------
   
  //---------------------------------------------- 
