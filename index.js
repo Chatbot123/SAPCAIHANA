@@ -19,7 +19,21 @@ app.post('/getmeasure-state', (req, res) => {
   var ent_state = req.body.nlp.entities.ent_state[0].raw;
   
   var xsjs_url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/Efashion_azure.xsjs?";
-  
+  if(ent_state)
+   {
+        ent_state=ent_state.split(" ").join("");
+        xsjs_url = xsjs_url + '&ENT_STATE=' + ent_state;
+   }
+  if(ent_measure)
+  {
+      ent_measure=ent_measure.split(" ").join("");
+      xsjs_url = xsjs_url  + '&ENT_MEASURE=' + ent_measure;
+  }
+   if(ent_state_value)
+  {
+      ent_state_value=ent_state_value.split(" ").join("");
+      xsjs_url= xsjs_url + '&STATE=' + ent_state_value;
+  }
    
       
                  res.send({
