@@ -15,7 +15,7 @@
     "request-promise-native": "^1.0.5",
     "express": "^4.15.2",
 	"body-parser": "^1.18.3",
-	 "recast.ai" : "^4.0.0"
+	 "recastai" : "^4.0.0"
   },
   "devDependencies": {
     "request": "^2.81.0",
