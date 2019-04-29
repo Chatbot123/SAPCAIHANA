@@ -11,8 +11,9 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
 
 
-app.post('/getmeasure-state', (req, res) => {
-  console.log(req.body)
+app.post('/getmeasure-state', (req, res) => 
+{
+  console.log(req.body);
   
   var ent_measure = req.body.nlp.entities.ent_measure[0].raw;
   var ent_state_value = req.body.nlp.entities.ent_state_value[0].raw;
@@ -100,27 +101,8 @@ app.post('/getmeasure-state', (req, res) => {
 		}
         
         
-        
-        
-        
-        
-        
-        /* res.send({
-                       replies: [{
-                                    type: 'text',
-                                    content: result,
-                                }], 
-                      conversation: {
-                                      memory: { key: 'value' }
-                                    }
-                      })*/
-              
-              //----------------------------------------------
-              
-              
-          //  }
-                        
-    }
+     
+    
  );
   
   
