@@ -107,7 +107,7 @@ app.post('/getmeasure-state', (req, res) =>
 							}
 						});			
 				}	
-			});
+			);
 			
 		  
 		  
