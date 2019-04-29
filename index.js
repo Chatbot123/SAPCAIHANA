@@ -62,11 +62,78 @@ app.post('/getmeasure-state', (req, res) =>
 				dataType: 'json'
 		}).then(function(response)
 		{
-					 
-						  //----------------------------------------------
+		
+            var result = JSON.parse(response.body);
+            var count = Object.keys(result.results).length;
+                      
+
+            for(var i = 0; i<count; i++)
+            {
+
+                 if(result.results[i].AMOUNT_SOLD)
+                {
+                    var sale_amount = result.results[i].AMOUNT_SOLD;
+                    distext = 'Sales worth of $' + sale_amount;
+                }
+                 if(result.results[i].MARGIN)
+                {
+                    var profit_amount = result.results[i].MARGIN;
+                    distext = 'Profit worth of $' + profit_amount;
+                }
+
+                  if(result.results[i].QUANTITY_SOLD)
+                {
+                    var qty_sold = result.results[i].QUANTITY_SOLD;
+                    distext = qty_sold+' Products sold ';
+                }
+                if(result.results[i].STATE)
+                {
+                    var v_state = result.results[i].STATE;
+                    distext = distext + ' in state ' + v_state;
+                }
+                if(result.results[i].CITY)
+                {
+                    var v_city = result.results[i].CITY;
+                    distext = distext + ' in city ' + v_city;
+                }
+                if(result.results[i].SHOP_NAME)
+                {
+                    var v_shop = result.results[i].SHOP_NAME;
+                    distext = distext + ' for shop ' + v_shop;
+                }
+                 if(result.results[i].FAMILY_NAME)
+                {
+                    var v_family = result.results[i].FAMILY_NAME;
+                    distext = distext + ' for product family ' + v_family;
+                } 
+
+                  if(result.results[i].YR)
+                {
+                    var v_yr = result.results[i].YR;
+                    distext = distext + ' for year ' + v_yr;
+                } 
+
+                  if(result.results[i].QTR)
+                {
+                    var v_qtr = result.results[i].QTR;
+                    distext = distext + ' for qtr ' + v_qtr;
+                } 
+
+                    if(result.results[i].MTH)
+                {
+                    var v_mth = result.results[i].MTH;
+                    distext = distext + ' for month ' + v_mth;
+                } 
+	    }		 
+					
+			
+			
+			
+			
+			//----------------------------------------------
 					var reply = [{
 						type: 'text',
-						content: response.body
+						content: distext
 					}];
 
 						res.status(200).json({
