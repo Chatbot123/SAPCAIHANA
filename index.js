@@ -41,25 +41,30 @@ app.post('/getmeasure-state', (req, res) =>
 		   
 		   //-----------------------------------------------------------------------------------
 		
-		username = "SANYAM_K",
-		password = "Welcome@234",
+		//username = "SANYAM_K",
+		//password = "Welcome@234",
 		// url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/EFASHION_DEV_TOP.xsjs?&STATE=tx&COMMAND=amountsold&ACTION=0&YR=0&MTH=0&QTR=0&NUM=0&ENT_STATE=state&ENT_MEASURE=sales",
-		auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
+		//auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
 
 		requestify.request
 		(xsjs_url,{
-				method: "GET",
+				method: 'GET',
 				headers : {
-					 	 //'Content-Type': 'application/json',
-						"Authorization" : auth
-					}
+					 	 'Content-Type': 'application/json'
+						
+					},
+				auth: {
+					username: 'SANYAM_K',
+					password: 'Welcome@234'
+					},
+				dataType: 'json'
 		}, function(response) 
 		{
 					 
 						  //----------------------------------------------
 					var reply = [{
 						type: 'text',
-						content: xsjs_url
+						content: response.body
 					}];
 
 						res.status(200).json({
