@@ -45,20 +45,20 @@ app.post('/getmeasure-state', (req, res) => {
 
     request(
     {
-        url : xsjs_url,
-        method: 'GET',
+        url : xsjs_url
+        //method: 'GET',
         headers : {
-          'Content-Type': 'application/json',
+          //'Content-Type': 'application/json',
             "Authorization" : auth
         }
-    }, function(error, response) 
+    }, function(error, response,body) 
       {
            // console.log('error:', error); // Print the error if one occurred
           //  console.log('body:', body);
             // console.log('res:', res);
-        console.log("The response.getBody() is: " + response.getBody());
-        var result = response.getBody();
-            var result = JSON.parse(result);
+        console.log("The response: " + body);
+        //var result = response.getBody();
+            var result = JSON.parse(body);
             //console.log(result);   
             // console.log(result.results[0].AMOUNT);  
            var count = Object.keys(result.results).length;
@@ -122,10 +122,11 @@ app.post('/getmeasure-state', (req, res) => {
                     var v_mth = result.results[i].MTH;
                     distext = distext + ' for month ' + v_mth;
                 } 
+	    }
               //----------------------------------------------
         var reply = [{
 			type: 'text',
-			content: result
+			content: distext
 		}];
 
             res.status(200).json({
