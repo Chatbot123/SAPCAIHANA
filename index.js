@@ -1,10 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var request = require('request-promise-native');
 //var sapcai = require('sapcai').default
-
 //var request = new sapcai.request('f6f1cfd675c26656fef9a2367f62c4a4', 'en')
 //const recastai = require('recastai').default;
-const requestify = require('requestify');
+//const requestify = require('requestify');
 //const request = new recastai.request('f6f1cfd675c26656fef9a2367f62c4a4');
 
 const app = express() 
@@ -49,7 +49,7 @@ app.post('/getmeasure-state', (req, res) =>
 		// url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/EFASHION_DEV_TOP.xsjs?&STATE=tx&COMMAND=amountsold&ACTION=0&YR=0&MTH=0&QTR=0&NUM=0&ENT_STATE=state&ENT_MEASURE=sales",
 		//auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
 
-		requestify.request
+		request
 		(xsjs_url,{
 				method: 'GET',
 				headers : {
