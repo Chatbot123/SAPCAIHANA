@@ -1,6 +1,8 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-//const request = require('request-promise-native')
+const express = require('express');
+const bodyParser = require('body-parser');
+const recastai = require('recastai').default;
+const requestify = require('requestify');
+const request = new recastai.request('f6f1cfd675c26656fef9a2367f62c4a4');
 
 const app = express() 
 
@@ -38,23 +40,35 @@ app.post('/getmeasure-state', (req, res) =>
 		  }
 		   
 		   //-----------------------------------------------------------------------------------
-		var request = require('request-promise-native'),
+	requestify.request('https://YOURSAPCPTENANT.hana.ondemand.com/etc/etc/blabla/OurPreciousBot/services/GetHeadcount.xsjs', {
+			method: "GET",
+			params: {
+			"A0GENDER": cleansedGender,
+			"A0EMPLGROUP": cleansedGroup,
+			"A0EMPLSTATUS": cleansedStatus,
+			"YGZONE": cleansedZone,
+			"A0COUNTRY": cleansedCountriesJSON
+			}
+
+	})	
+	
+	
 		username = "SANYAM_K",
 		password = "Welcome@234",
 		// url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/EFASHION_DEV_TOP.xsjs?&STATE=tx&COMMAND=amountsold&ACTION=0&YR=0&MTH=0&QTR=0&NUM=0&ENT_STATE=state&ENT_MEASURE=sales",
 		auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
 
-		request
+		requestify.request
 		(
 			{
 				url : xsjs_url,
-				//method: 'GET',
+				method: "GET",
 				headers : {
 					 	 //'Content-Type': 'application/json',
 						"Authorization" : auth
 					}
-			}, function(error, response,body) 
-				{
+		}).then function(response) 
+		{
 					 
 						  //----------------------------------------------
 					var reply = [{
@@ -101,12 +115,11 @@ app.post('/getmeasure-state', (req, res) =>
 						});			
 						
 				}
-			);
+			
 		  
 		  
 		  
-		  //------------------------------------------------------------------------------------
-						
+		
 			   
 
 });
