@@ -56,9 +56,9 @@ app.post('/getmeasure-state', (req, res) => {
             var result = JSON.parse(body);
             //console.log(result);   
             // console.log(result.results[0].AMOUNT);  
-            var count = Object.keys(result.results).length;
+          //  var count = Object.keys(result.results).length;
             //console.log(count);
-            var distext = '';
+        /*    var distext = '';
 
             for(var i = 0; i<count; i++)
             {
