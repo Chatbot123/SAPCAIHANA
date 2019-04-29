@@ -49,8 +49,8 @@ app.post('/getmeasure-state', (req, res) =>
 		// url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/EFASHION_DEV_TOP.xsjs?&STATE=tx&COMMAND=amountsold&ACTION=0&YR=0&MTH=0&QTR=0&NUM=0&ENT_STATE=state&ENT_MEASURE=sales",
 		//auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
 
-		request
-		(xsjs_url,{
+		request({
+				url : xsjs_url,
 				method: 'GET',
 				headers : {
 					 	 'Content-Type': 'application/json'
