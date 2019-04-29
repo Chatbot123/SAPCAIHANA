@@ -47,9 +47,7 @@ app.post('/getmeasure-state', (req, res) =>
 		auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
 
 		requestify.request
-		(
-			{
-				url : xsjs_url,
+		(xsjs_url,{
 				method: 'GET',
 				headers : {
 					 	 //'Content-Type': 'application/json',
