@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-var sapcai = require('sapcai').default
+//var sapcai = require('sapcai').default
 
-var request = new sapcai.request('f6f1cfd675c26656fef9a2367f62c4a4', 'en')
+//var request = new sapcai.request('f6f1cfd675c26656fef9a2367f62c4a4', 'en')
 //const recastai = require('recastai').default;
 const requestify = require('requestify');
 //const request = new recastai.request('f6f1cfd675c26656fef9a2367f62c4a4');
