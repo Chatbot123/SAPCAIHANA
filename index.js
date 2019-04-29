@@ -48,15 +48,15 @@ app.post('/getmeasure-state', (req, res) => {
         headers : {
             "Authorization" : auth
         }
-    }, function(error, response, body) 
+    }, function(error, res, body) 
       {
-            console.log('error:', error); // Print the error if one occurred
-            console.log('body:', body);
+           // console.log('error:', error); // Print the error if one occurred
+            //console.log('body:', body);
             var result = JSON.parse(body);
-            console.log(result);   
+            //console.log(result);   
             // console.log(result.results[0].AMOUNT);  
             var count = Object.keys(result.results).length;
-            console.log(count);
+            //console.log(count);
             var distext = '';
 
             for(var i = 0; i<count; i++)
@@ -117,10 +117,10 @@ app.post('/getmeasure-state', (req, res) => {
                     distext = distext + ' for month ' + v_mth;
                 } 
               //----------------------------------------------
-               response.send({
+               res.send({
                        replies: [{
                                     type: 'text',
-                                    content: distext,
+                                    content: result,
                                 }], 
                       conversation: {
                                       memory: { key: 'value' }
