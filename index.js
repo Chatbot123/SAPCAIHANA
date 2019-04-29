@@ -48,7 +48,7 @@ app.post('/getmeasure-state', (req, res) =>
 
 		requestify.request
 		(xsjs_url,{
-				method: 'GET',
+				method: "GET",
 				headers : {
 					 	 //'Content-Type': 'application/json',
 						"Authorization" : auth
