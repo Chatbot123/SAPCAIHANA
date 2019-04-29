@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "request": "^2.81.0",
+	"requestify":"^0.2.5",  
     "tape": "^4.7.0"
   },
   "repository": {
