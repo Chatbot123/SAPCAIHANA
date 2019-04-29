@@ -47,7 +47,7 @@ app.post('/getmeasure-state', (req, res) =>
 		request
 		(
 			{
-				url : xsjs_url
+				url : xsjs_url,
 				//method: 'GET',
 				headers : {
 					 	 //'Content-Type': 'application/json',
