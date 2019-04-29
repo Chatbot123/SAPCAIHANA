@@ -40,19 +40,7 @@ app.post('/getmeasure-state', (req, res) =>
 		  }
 		   
 		   //-----------------------------------------------------------------------------------
-	requestify.request('https://YOURSAPCPTENANT.hana.ondemand.com/etc/etc/blabla/OurPreciousBot/services/GetHeadcount.xsjs', {
-			method: "GET",
-			params: {
-			"A0GENDER": cleansedGender,
-			"A0EMPLGROUP": cleansedGroup,
-			"A0EMPLSTATUS": cleansedStatus,
-			"YGZONE": cleansedZone,
-			"A0COUNTRY": cleansedCountriesJSON
-			}
-
-	})	
-	
-	
+		
 		username = "SANYAM_K",
 		password = "Welcome@234",
 		// url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/EFASHION_DEV_TOP.xsjs?&STATE=tx&COMMAND=amountsold&ACTION=0&YR=0&MTH=0&QTR=0&NUM=0&ENT_STATE=state&ENT_MEASURE=sales",
