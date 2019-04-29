@@ -55,7 +55,7 @@ app.post('/getmeasure-state', (req, res) =>
 					 	 //'Content-Type': 'application/json',
 						"Authorization" : auth
 					}
-		}).then function(response) 
+		}, function(response) 
 		{
 					 
 						  //----------------------------------------------
@@ -104,7 +104,7 @@ app.post('/getmeasure-state', (req, res) =>
 						
 				}
 			
-		  
+		  );
 		  
 		  
 		
