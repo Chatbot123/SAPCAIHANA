@@ -51,7 +51,8 @@ app.post('/getmeasure-state', (req, res) => {
     }, function(error, res, body) 
       {
            // console.log('error:', error); // Print the error if one occurred
-            //console.log('body:', body);
+            console.log('body:', body);
+             console.log('res:', res);
             var result = JSON.parse(body);
             //console.log(result);   
             // console.log(result.results[0].AMOUNT);  
@@ -120,7 +121,7 @@ app.post('/getmeasure-state', (req, res) => {
                res.send({
                        replies: [{
                                     type: 'text',
-                                    content: result,
+                                    content: res,
                                 }], 
                       conversation: {
                                       memory: { key: 'value' }
