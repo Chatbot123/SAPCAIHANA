@@ -17,6 +17,7 @@ app.post('/getmeasure-state', (req, res) => {
   var ent_measure = req.body.nlp.entities.ent_measure[0].raw;
   var ent_state_value = req.body.nlp.entities.ent_state_value[0].raw;
   var ent_state = req.body.nlp.entities.ent_state[0].raw;
+  var distext = '';
   
   var xsjs_url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/Efashion_azure.xsjs?";
   if(ent_state)
@@ -45,7 +46,9 @@ app.post('/getmeasure-state', (req, res) => {
     request(
     {
         url : xsjs_url,
+        method: 'GET',
         headers : {
+          'Content-Type': 'application/json',
             "Authorization" : auth
         }
     }, function(error, res, body) 
@@ -58,7 +61,7 @@ app.post('/getmeasure-state', (req, res) => {
             // console.log(result.results[0].AMOUNT);  
           //  var count = Object.keys(result.results).length;
             //console.log(count);
-        /*    var distext = '';
+        /*    
 
             for(var i = 0; i<count; i++)
             {
