@@ -51,17 +51,19 @@ app.post('/getmeasure-state', (req, res) => {
           'Content-Type': 'application/json',
             "Authorization" : auth
         }
-    }, function(error, res, body) 
+    }, function(error, response) 
       {
            // console.log('error:', error); // Print the error if one occurred
           //  console.log('body:', body);
             // console.log('res:', res);
-            var result = JSON.parse(body);
+        console.log("The response.getBody() is: " + response.getBody());
+        var result = response.getBody();
+            var result = JSON.parse(result);
             //console.log(result);   
             // console.log(result.results[0].AMOUNT);  
-          //  var count = Object.keys(result.results).length;
+           var count = Object.keys(result.results).length;
             //console.log(count);
-        /*    
+            
 
             for(var i = 0; i<count; i++)
             {
@@ -119,9 +121,59 @@ app.post('/getmeasure-state', (req, res) => {
                 {
                     var v_mth = result.results[i].MTH;
                     distext = distext + ' for month ' + v_mth;
-                } */
+                } 
               //----------------------------------------------
-               res.send({
+        var reply = [{
+			type: 'text',
+			content: result
+		}];
+
+            res.status(200).json({
+			replies: reply,
+		    conversation: {
+      			memory: { 	ent_measure: ent_measure,
+      					  	ent_state_value : ent_state_value,
+      						ent_state : ent_state
+      					
+      			}
+    		}
+		});
+	}, function(error) {
+			var errorMessage = "GET to XSJS service failed";
+			if(error.code && error.body) {
+				errorMessage += " - " + error.code + ": " + error.body
+			}
+			console.log("Something went wrong with the call");
+			console.log(errorMessage);
+			// dump the full object to see if you can formulate a better error message.
+			console.log(error.body);
+			
+			//Try to provide a proper error response
+			
+			var reply = [{
+				type: 'text',
+				content: "I'm sorry! Something went wrong with the call to the SAP query. Try asking a different question - or type 'reset'."
+			}];
+
+			res.status(200).json({
+				replies: reply,
+				conversation: {
+					memory: { 	ent_measure: ent_measure,
+      					  	ent_state_value : ent_state_value,
+      						ent_state : ent_state
+					}
+				}
+			});			
+			
+		}
+        
+        
+        
+        
+        
+        
+        
+        /* res.send({
                        replies: [{
                                     type: 'text',
                                     content: result,
@@ -129,7 +181,7 @@ app.post('/getmeasure-state', (req, res) => {
                       conversation: {
                                       memory: { key: 'value' }
                                     }
-                      })
+                      })*/
               
               //----------------------------------------------
               
