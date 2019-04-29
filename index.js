@@ -50,7 +50,7 @@ app.post('/getmeasure-state', (req, res) =>
 		(
 			{
 				url : xsjs_url,
-				method: "GET",
+				method: 'GET',
 				headers : {
 					 	 //'Content-Type': 'application/json',
 						"Authorization" : auth
